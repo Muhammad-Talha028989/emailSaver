@@ -6,6 +6,7 @@ specifiers:
   '@types/react-dom': ^18.0.8
   '@vitejs/plugin-react': ^2.2.0
   autoprefixer: ^10.4.13
+  immer: ^9.0.16
   postcss: ^8.4.18
   react: ^18.2.0
   react-dom: ^18.2.0
@@ -17,10 +18,11 @@ specifiers:
 
 dependencies:
   '@react-spring/web': 9.5.5_biqbaboplfbrettd7655fr4n2y
+  immer: 9.0.16
   react: 18.2.0
   react-dom: 18.2.0_react@18.2.0
   react-router-dom: 6.4.3_biqbaboplfbrettd7655fr4n2y
-  zustand: 4.1.4_react@18.2.0
+  zustand: 4.1.4_immer@9.0.16+react@18.2.0
 
 devDependencies:
   '@types/react': 18.0.25
@@ -949,6 +951,10 @@ packages:
       function-bind: 1.1.1
     dev: true
 
+  /immer/9.0.16:
+    resolution: {integrity: sha512-qenGE7CstVm1NrHQbMh8YaSzTZTFNP3zPqr3YU0S0UY441j4bJTg4A2Hh5KAhwgaiU6ZZ1Ar6y/2f4TblnMReQ==}
+    dev: false
+
   /is-binary-path/2.1.0:
     resolution: {integrity: sha512-ZMERYes6pDydyuGidse7OsHxtbI7WVeUEozgR/g7rd0xUimYNlvZRE/K2MgZTjWy725IfelLeVcEM97mmtRGXw==}
     engines: {node: '>=8'}
@@ -1392,7 +1398,7 @@ packages:
     engines: {node: '>= 6'}
     dev: true
 
-  /zustand/4.1.4_react@18.2.0:
+  /zustand/4.1.4_immer@9.0.16+react@18.2.0:
     resolution: {integrity: sha512-k2jVOlWo8p4R83mQ+/uyB8ILPO2PCJOf+QVjcL+1PbMCk1w5OoPYpAIxy9zd93FSfmJqoH6lGdwzzjwqJIRU5A==}
     engines: {node: '>=12.7.0'}
     peerDependencies:
@@ -1404,6 +1410,7 @@ packages:
       react:
         optional: true
     dependencies:
+      immer: 9.0.16
       react: 18.2.0
       use-sync-external-store: 1.2.0_react@18.2.0
     dev: false

@@ -7,8 +7,6 @@ import PersonalInfoForm from './assets/components/EmailProtection/Personal.info.
 
 function App (): JSX.Element
 {
-  const [ count, setCount ] = useState( 0 )
-
   return (
     <Router>
       <div className="App">
