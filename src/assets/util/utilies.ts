@@ -6,6 +6,28 @@
     }
    export  const handleSubmit: (evt: any,FormState:any) => void = (evt: any,FormState:any): void =>
    {
-        evt?.preventDefault()
-        console.info( FormState )
+       evt?.preventDefault()
+       if ( emailValidationN( FormState ) === true )
+       {
+           console.info( FormState )
+    
+       }
+       else
+       {
+           
+           alert( "Enter the Correct Details" );
+       }
+    }
+    
+    const emailState = {
+    email: '',
+    error: ''
+}
+    
+export const emailValidationN: (FromState:any) => boolean = (FormState:any):boolean =>{
+        const regex = /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
+        if(!FormState.email && !FormState.secretkey || regex.test(FormState.email) === false){
+            return false;
+    }
+        return true;
     }
