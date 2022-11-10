@@ -15,9 +15,11 @@ const Home = () =>
 
     return (
         <>
-            <Link to={ "/" } className="inline-flex items-center justify-center px-5 py-3 ml-11 mt-5 text-base font-medium text-center text-white rounded-lg bg-primary-700 hover:bg-primary-800 focus:ring-4 focus:ring-primary-300 dark:focus:ring-primary-900">
-                Go Back
-            </Link>
+            <animated.div style={ styleForm } >
+                <Link to={ "/" } className="inline-flex items-center justify-center px-5 py-3 ml-11 mt-5 text-base font-medium text-center text-white rounded-lg bg-primary-700 hover:bg-primary-800 focus:ring-4 focus:ring-primary-300 dark:focus:ring-primary-900">
+                    Go Back
+                </Link>
+            </animated.div>
             <section className="bg-white dark:bg-gray-900">
                 <animated.div style={ styleForm } className="grid max-w-screen-xl px-4 py-8 mx-auto lg:gap-8 xl:gap-0 lg:py-16 lg:grid-cols-12">
                     <div className="mr-auto place-self-center lg:col-span-7" >
