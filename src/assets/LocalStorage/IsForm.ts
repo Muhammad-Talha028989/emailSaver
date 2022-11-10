@@ -12,7 +12,7 @@ interface IStoreState
 }
 let StoreFormState = ( set: Function ) => ( {
     StoreState: {
-        isProtectedForm: true
+        isProtectedForm: false
     },
     setStoreState: ( isProtectedForm: Boolean ):void => set( produce( (state:IStoreState): void =>
     {
