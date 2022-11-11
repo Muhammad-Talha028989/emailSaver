@@ -1,19 +1,11 @@
 {
   "compilerOptions": {
-    "target": "ESNext",
-    "useDefineForClassFields": true,
-    "module": "ESNext",
-    "lib": ["ESNext"],
-    "moduleResolution": "Node",
-    "strict": false,
-    "resolveJsonModule": true,
-    "isolatedModules": false,
+    "module": "commonjs",
     "esModuleInterop": true,
-    "noEmit": true,
-    "noUnusedLocals": true,
-    "noUnusedParameters": true,
-    "noImplicitReturns": true,
-    "skipLibCheck": true,
+    "target": "es6",
+    "moduleResolution": "node",
+    "sourceMap": true,
+    "outDir": "dist"
   },
-  "include": ["src"]
+  "lib": ["es2015"]
 }
