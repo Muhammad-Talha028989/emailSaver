@@ -3,18 +3,7 @@ import { handleChangle, handleSubmit } from '../../util/utilies'
 const PersonalInfoForm: () => JSX.Element = (): JSX.Element =>
 {
     const [ FormState, setFormState ] = useState( {} )
-
-    // const handleChangle: ( evt: any ) => void = ( evt ): void =>
-    // {
-    //     evt?.preventDefault()
-    //     const { name, value } = evt?.target
-    //     setFormState( { ...FormState, [ name ]: value } )
-    // }
-    // const handleSubmit: () => void = (): void =>
-    // {
-    //     console.info( FormState )
-    // }
-
+    
     return (
         <>
             <section className="bg-white dark:bg-gray-900">
