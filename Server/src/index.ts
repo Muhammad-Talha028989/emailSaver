@@ -2,7 +2,7 @@ import express,{ Express,Request,Response } from "express";
 import cors from "cors"
 import bodyParser, { urlencoded } from "body-parser";
 import HomeRoute from "./assets/routes/Home.route";
-
+import { createMongodbConnection } from './assets/database/index.database';
 const app: Express = express()
 
 // parse application/x-www-form-urlencoded
@@ -14,6 +14,12 @@ const port:number = 3000
 
 app.use( cors( { origin: "*", methods: [ "GET", "POST", "PUT", "DELETE" ] } ) );
 app.use( express.json( {} ) );
+
+/* Mongoose code */
+createMongodbConnection()
+
+
+
 /*Home route*/
 app.use( "/home", HomeRoute ) 
 
