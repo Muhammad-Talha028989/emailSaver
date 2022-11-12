@@ -7,16 +7,21 @@ interface IStoreState
 {
   
     StoreState: {
-        isProtectedForm: Boolean
+        ResponseMessage: {
+            isSuccessful: Boolean,
+            message: String
+        }
     }
 }
+type ResponseObjectType = {isSuccessful:Boolean,message:String}
 let StoreFormState = ( set: Function ) => ( {
     StoreState: {
-        isProtectedForm: false
+        ResponseMessage: {isSuccessful: true, message:""}
     },
-    setStoreState: ( isProtectedForm: Boolean ):void => set( produce( (state:IStoreState): void =>
+    setStoreState: ( ResponseObject:ResponseObjectType ):void => set( produce( (state:IStoreState): void =>
     {
-        state.StoreState.isProtectedForm = isProtectedForm;
+        state.StoreState.ResponseMessage.isSuccessful = ResponseObject.isSuccessful;
+        state.StoreState.ResponseMessage.message = ResponseObject.message;
     }
     ))
 })

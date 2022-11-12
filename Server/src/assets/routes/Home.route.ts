@@ -12,7 +12,7 @@ HomeRoute.post( "/", ( req: Request, res: Response ): void =>
     let responseData:unknown = req?.body?.RequestData
 
     console.info( responseData )
-    res.send({message:"Successful!",code:200}).status(200)
+    res.send({message:"Successful!",code:200,isSuccessful:true}).status(200)
 })
 
 

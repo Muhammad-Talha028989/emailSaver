@@ -1,6 +1,9 @@
-import axios, { Axios } from "axios"  
+import axios, { Axios } from "axios";
+
+
 
 axios.defaults.baseURL = `http://localhost:3000`
+
 
 export const handleChangle: ( evt: any, setFormState: any, FormState: any ) => void = ( evt: any, setFormState: any, FormState: any ): void =>
     {
@@ -8,9 +11,12 @@ export const handleChangle: ( evt: any, setFormState: any, FormState: any ) => v
         const { name, value } = evt?.target
         setFormState( { ...FormState, [ name ]: value } )
     }
-   export  const handleSubmit: (evt: any,FormState:any) => void = async (evt: any,FormState:any): Promise<void> =>
+   export  const handleSubmit = async (evt: any,FormState:any):Promise<any> =>
    {
-       try {
+       
+       try
+       {
+           
            if ( emailValidationN( FormState ) === true )
             {
                axios.post( "/home",{
@@ -21,7 +27,7 @@ export const handleChangle: ( evt: any, setFormState: any, FormState: any ) => v
                        Accept: 'application/json, text/plain, */*',
                        'Content-Type': 'application/json',
                    }
-               }).then(response => console.info(response.data));
+               } ).then( response => response.data );
             }
        } catch (error) {
             console.info(["Error from axios method handleSubmit",error])
