@@ -11,8 +11,8 @@ FetchRoute.get( "/", ( req: Request, res: Response ): void =>
 FetchRoute.post( "/", ( req: Request, res: Response ): void =>
 {
     let responseData = req?.body.RequestData;
-    console.info( [ "request data", responseData?.email ] )
-    PersonalModel.find( { email: responseData?.email } ).then( resultResponse =>
+    console.info( [ "request data", responseData] )
+    PersonalModel.findOne( { email: responseData?.email } ).then( resultResponse =>
     {
         console.info( resultResponse );
     })

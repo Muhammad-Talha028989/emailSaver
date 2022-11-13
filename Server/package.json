@@ -21,8 +21,9 @@
   },
   "dependencies": {
     "@types/cors": "^2.8.12",
+    "@types/cryptr": "^4.0.1",
     "cors": "^2.8.5",
-    "mongoose": "^6.7.2",
-    "mongoose-encryption": "^2.1.2"
+    "cryptr": "^6.0.3",
+    "mongoose": "^6.7.2"
   }
 }
