@@ -5,7 +5,7 @@ import cors from "cors"
 import bodyParser, { urlencoded } from "body-parser";
 import HomeRoute from "./assets/routes/Home.route";
 import { createMongodbConnection } from './assets/database/index.database';
-import { testModel } from './assets/database/models/INF.models.schema';
+import FetchRoute from './assets/routes/Get.info.route';
 const app: Express = express()
 
 // parse application/x-www-form-urlencoded
@@ -20,18 +20,14 @@ app.use( express.json( {} ) );
 
 /* Mongoose code */
 createMongodbConnection()
-// const newtest = new testModel( {
-//     name: "Muhammad Talha",age:23
-// } ).save();
-
-testModel.findOne( { age: 23 } ).then( result =>
-{
-    console.info(["Result",result])
-})
 
 
 /*Home route*/
 app.use( "/home", HomeRoute ) 
+
+/* Get Inof route */
+
+app.use( "/get/info", FetchRoute );
 
 
 app.listen( port, () => console.info( `Running at port ${port}` ) )

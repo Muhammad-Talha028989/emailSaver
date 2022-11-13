@@ -7,18 +7,17 @@ import encrypt from "mongoose-encryption"
 const enckey: string = process.env.ENCRYPTION_KEY
 const sigkey:string = process.env.SIGNATUREKEY
 
-const testSchema = new Schema( {
-    name: {
-        type:String
-    },
-    age: {
-        type:Number
-    }
-},{})
 
-testSchema.plugin(encrypt, {encryptedFields: ['name'],secret:enckey });
+const SetPersonalSchema = new Schema( {
+    email: String,
+    password: String,
+    secretKey:String,
+    description:String
+})
+
+SetPersonalSchema.plugin(encrypt, {encryptedFields: ['password','secretkey'],secret:enckey });
 
 
-export const testModel = model( "Demo", testSchema );
+export const PersonalModel = model( "Personal-Information", SetPersonalSchema );
 
 

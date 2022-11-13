@@ -19,7 +19,7 @@ export const handleChangle: ( evt: any, setFormState: any, FormState: any ) => v
            
            if ( emailValidationN( FormState ) === true )
             {
-               axios.post( "/home",{
+               await axios.post( "/home",{
                    RequestData: FormState
                }, {
                    method: "post",
