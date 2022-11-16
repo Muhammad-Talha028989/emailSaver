@@ -44,12 +44,11 @@ HomeRoute.post( "/", ( req: Request, res: Response ): void =>
                     password: password
                 }
             }, { returnDocument: "after" }, ( error, FOAUResult ) => {
-                console.info( FOAUResult )
+               /* No Logic Heres */
             } )
         }
 
     } )
-
 
     res.send( { message: "Successful!", code: 200, isSuccessful: true } ).status( 200 )
 } )

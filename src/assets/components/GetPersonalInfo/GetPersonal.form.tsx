@@ -8,7 +8,7 @@ const GetPersonalForm = () =>
 
     const onSubmitHandler = async ( e: any, FormState: any ) =>
     {
-        e.preventDefault();
+        e.preventDefault()
         try
         {
             axios.defaults.baseURL = "http://localhost:3000/"
@@ -21,7 +21,7 @@ const GetPersonalForm = () =>
                     Accept: 'application/json, text/plain, */*',
                     'Content-Type': 'application/json',
                 }
-            } ).then( response => response.data );
+            } ).then( response => { alert( response?.data?.message ) } )
 
         } catch ( error )
         {
