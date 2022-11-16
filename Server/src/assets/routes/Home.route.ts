@@ -18,33 +18,41 @@ HomeRoute.get( "/", ( req: Request, res: Response ): void =>
 HomeRoute.post( "/", ( req: Request, res: Response ): void =>
 {
     let responseData = req?.body?.RequestData
-    console.info( [ "request data", responseData ] );
-    const password:string = cryptr.encrypt(responseData.password);
-    const secret: string = cryptr.encrypt( responseData.secretkey );
+    // console.info( [ "request data", responseData ] )
+    const password: string = cryptr.encrypt( responseData.password )
+    const secret: string = cryptr.encrypt( responseData.secretkey )
     /* Here is logic for database accessed */
-    PersonalModel.find( { email: responseData?.email} ).then( ( response ) =>
+    PersonalModel.find( { email: responseData?.email } ).then( ( response ) =>
     {
-        if ( response === null )
+        console.info( response )
+        if ( response === null || response.length === 0 )
         {
             let newPersonalDoc = new PersonalModel( {
                 email: responseData?.email,
                 secret: secret,
-                password: password,
-                description: responseData?.description
+                password: [ password ],
+                description: responseData?.description,
+                timestamp: Date.now()
             } ).save()
-            console.info("Data added to database successful")
-            return 
+            console.info( "Data added to database successful" )
+            return
         }
-        console.info( "Here database information" );
-    })
+        else
+        {
+            PersonalModel.findOneAndUpdate( { email: responseData?.email }, {
+                $push: {
+                    password: password
+                }
+            }, { returnDocument: "after" }, ( error, FOAUResult ) => {
+                console.info( FOAUResult )
+            } )
+        }
 
-    // PersonalModel.findOne( { email: responseData?.email } ).then( ( response ) =>
-    // {
-    //     const secretKey: string = cryptr.decrypt( response.secret )
-    //     console.info(secretKey)
-    // })
+    } )
+
+
     res.send( { message: "Successful!", code: 200, isSuccessful: true } ).status( 200 )
-})
+} )
 
 
 
