@@ -26,7 +26,11 @@ FetchRoute.post( "/", ( req: Request, res: Response ): void =>
     PersonalModel.findOne( { email: responseData?.email} ).then( resultResponse =>
     {
         let secretDecrypt: string = cryptr.decrypt( resultResponse?.secret );
-
+        let PasswordDecrptArray: Array<String> = [];
+        resultResponse?.password?.map( items =>
+        {
+            PasswordDecrptArray.push( cryptr.decrypt( items ) );
+        }) 
         if ( secretDecrypt === responseData?.secretkey )
         {
             const Errors: ErrorHandler = {
@@ -34,7 +38,12 @@ FetchRoute.post( "/", ( req: Request, res: Response ): void =>
                 code: "OK" || "PASS" || "SUCCESSFUL",
                 status: 200
             }
-            res.send( Errors );
+            const ResponseObject = {
+                email: resultResponse?.email,
+                password: PasswordDecrptArray,
+                description: resultResponse?.description
+            }
+            res.send( {...Errors,ResponseObject});
         }
         else
         {
@@ -43,7 +52,7 @@ FetchRoute.post( "/", ( req: Request, res: Response ): void =>
                 code: "FAIL" || "WROUNG" || "UNSUCCESSFUL",
                 status: 404 
             };
-            res.send(Errors)
+            res.send({...Errors,resData:{}})
         }
     })
 })

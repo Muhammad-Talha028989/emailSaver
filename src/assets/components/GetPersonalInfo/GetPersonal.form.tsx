@@ -1,10 +1,13 @@
 import React from 'react'
 import { handleChangle, handleSubmit } from '../../util/utilies'
 import axios from 'axios'
+import useEmailStoreState from '../../LocalStorage/EmailStore'
 
 const GetPersonalForm = () =>
 {
     const [ FormState, setFormState ] = React.useState( {} )
+
+    const setEmailList = useEmailStoreState( state => state?.setStoreState )
 
     const onSubmitHandler = async ( e: any, FormState: any ) =>
     {
@@ -21,7 +24,11 @@ const GetPersonalForm = () =>
                     Accept: 'application/json, text/plain, */*',
                     'Content-Type': 'application/json',
                 }
-            } ).then( response => { alert( response?.data?.message ) } )
+            } ).then( response =>
+            {
+                setEmailList( response?.data )
+                alert( response?.data?.message )
+            } )
 
         } catch ( error )
         {
