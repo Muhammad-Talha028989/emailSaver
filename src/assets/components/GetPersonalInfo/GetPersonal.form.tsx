@@ -28,6 +28,10 @@ const GetPersonalForm = () =>
             {
                 setEmailList( response?.data )
                 alert( response?.data?.message )
+                if ( response?.data?.status === 200 )
+                {
+                    window.location.assign( "/show-get-data" )
+                }
             } )
 
         } catch ( error )

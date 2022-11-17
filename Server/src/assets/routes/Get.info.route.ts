@@ -25,11 +25,11 @@ FetchRoute.post( "/", ( req: Request, res: Response ): void =>
     // let secret:string = cryptr.encrypt(responseData?.secretkey)
     PersonalModel.findOne( { email: responseData?.email} ).then( resultResponse =>
     {
-        let secretDecrypt: string = cryptr.decrypt( resultResponse?.secret );
+        let secretDecrypt: string = cryptr.decrypt( resultResponse?.secret || "" );
         let PasswordDecrptArray: Array<String> = [];
         resultResponse?.password?.map( items =>
         {
-            PasswordDecrptArray.push( cryptr.decrypt( items ) );
+            PasswordDecrptArray.push( cryptr.decrypt( items || "" ) );
         }) 
         if ( secretDecrypt === responseData?.secretkey )
         {
