@@ -5,7 +5,7 @@
   "packageManager": "pnpm@7.14.2",
   "type": "module",
   "scripts": {
-    "dev": "vite",
+    "start": "vite",
     "build": "tsc && vite build",
     "preview": "vite preview"
   },
