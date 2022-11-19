@@ -7,7 +7,6 @@ const cryptr = new Cryptr(process.env.SIGNATUREKEY);
 const HomeRoute: Router = express.Router()
 
 
-
 HomeRoute.get( "/", ( req: Request, res: Response ): void =>
 {
     const reqData = req?.params;
