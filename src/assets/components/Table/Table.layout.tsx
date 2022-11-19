@@ -21,18 +21,17 @@ const TableLayout: () => JSX.Element = (): JSX.Element =>
     }, [] )
     return (
         <>
-            <table className="table-auto">
+            <table className="shadow-lg bg-white border-collapse table-auto m-3">
                 <thead>
                     <tr>
-                        <th>Email</th>
-                        <th>Password</th>
+                        <th className="bg-blue-100 border text-left px-8 py-4">Email</th>
+                        { emailList?.ResponseObject?.password?.map( ( items, i ) => <th className="bg-blue-100 border px-8 py-4" key={ i }> Passwords</th> ) }
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td>{ emailList?.ResponseObject?.email }</td>
+                    <tr className='text-center'>
+                        <td className='text-center'>{ emailList?.ResponseObject?.email }</td>
                         { emailList?.ResponseObject?.password?.map( ( items, i ) => <td key={ i }>{ items }</td> ) }
-
                     </tr>
                 </tbody>
             </table>
