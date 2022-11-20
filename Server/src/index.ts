@@ -9,7 +9,7 @@ import FetchRoute from './assets//routes/Get.info.route';
 import path from "path"
 const app = express();
 // for deployment
-app.use("/",express.static(path.join(__dirname + '/public')))
+app.use(express.static(path.join(__dirname + '/public')))
 
 const PORT = process.env.PORT || process.env.PORT1 || process.env.PORT2;
 
