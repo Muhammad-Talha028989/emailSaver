@@ -8,6 +8,8 @@ import HomeRoute from "./assets/routes/Home.route";
 import { createMongodbConnection } from './assets//database/index.database';
 import FetchRoute from './assets//routes/Get.info.route';
 
+const app:Express = express()
+
 app.use(bodyParser.urlencoded({ extended: false }))
 // parse application/json
 app.use( bodyParser.json() )
