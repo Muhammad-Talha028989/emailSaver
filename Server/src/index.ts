@@ -13,7 +13,7 @@ app.use(express.static(path.join(__dirname + '/public')))
 
 const PORT = process.env.PORT || process.env.PORT1 || process.env.PORT2;
 
-app.use( cors( { origin: "*", methods: [ "GET", "POST", "PUT", "DELETE" ] } ) );
+app.use( cors() );
 app.use( express.json( {} ) );
 
 
