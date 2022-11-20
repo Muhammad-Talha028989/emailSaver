@@ -2,7 +2,7 @@ import React from 'react'
 import { handleChangle, handleSubmit } from '../../util/utilies'
 import axios from 'axios'
 import useEmailStoreState from '../../LocalStorage/EmailStore'
-import {Navigate} from "react-router-dom"
+import { Navigate } from "react-router-dom"
 
 const GetPersonalForm = () =>
 {
@@ -31,8 +31,10 @@ const GetPersonalForm = () =>
                 alert( response?.data?.message )
                 if ( response?.data?.status === 200 )
                 {
-                    <Navigate to="/show-get-data" replace={ true } />
-                    
+                    ( () =>
+                    {
+                        <Navigate to={ "/show-get-data" } replace={ true } />
+                    } )()
                 }
             } )
 
