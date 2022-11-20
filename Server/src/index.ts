@@ -1,4 +1,4 @@
-import * as dotenv from 'dotenv'
+import * as dotenv from "dotenv"
 dotenv.config()
 import {utils} from "./assets/utils/index.utils"
 const { express, Request, Response, cors, bodyParser, urlencoded, HomeRoute, createMongodbConnection, FetchRoute, app } = utils;
