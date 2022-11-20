@@ -9,7 +9,6 @@
   "module": "CommonJS",
   "scripts": {
     "dev": "ts-node-dev --respawn --transpile-only src/index.ts",
-    "build": "tsc && vite build",
     "ts-node:dev": "ts-node src/index.ts",
     "start": "ts-node dist/index.js",
     "ts-node:build": "tsc -p .",
