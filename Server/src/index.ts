@@ -1,9 +1,9 @@
 import * as dotenv from "dotenv"
 dotenv.config()
 
-const express = require("express")
+import express from "express"
 import cors from "cors"
-const bodyParser = require("body-parser")
+import bodyParser from "body-parser"
 import HomeRoute from "./assets/routes/Home.route";
 import { createMongodbConnection } from './assets//database/index.database';
 import FetchRoute from './assets//routes/Get.info.route';
