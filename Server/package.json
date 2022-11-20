@@ -6,6 +6,7 @@
     "node": "18.12.1"
   },
   "module": "CommonJS",
+  "main": "src/index.ts",
   "scripts": {
     "dev": "ts-node-dev --respawn --transpile-only src/index.ts",
     "ts-node:dev": "ts-node src/index.ts",

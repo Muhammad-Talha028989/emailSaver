@@ -15,7 +15,7 @@ app.use( express.json( {} ) );
 
 // for deployment
 if(process.env.NODE_ENV === "production"){
-    app.use(express.static("public"))
+    app.use(express.static("Client/dist"))
 }
 
 /* Mongoose code */
