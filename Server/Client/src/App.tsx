@@ -15,8 +15,8 @@ function App ()
           <Route path='/' element={ <Home /> }>
             <Route path='/' element={ <PersonalInfoForm /> } />
             <Route path='/get-personal-data' element={ <GetPersonalForm /> } />
-          </Route>
             <Route path='/show-get-data' element={ <TableLayout /> } />
+          </Route>
         </Routes>
 
       </div>
