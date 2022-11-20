@@ -3,7 +3,7 @@ dotenv.config()
 
 const express = require("express")
 import cors from "cors"
-import bodyParser, { urlencoded } from "body-parser";
+const bodyParser = require("body-parser")
 import HomeRoute from "./assets/routes/Home.route";
 import { createMongodbConnection } from './assets//database/index.database';
 import FetchRoute from './assets//routes/Get.info.route';
