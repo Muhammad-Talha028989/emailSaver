@@ -3,6 +3,9 @@
   "version": "1.0.0",
   "description": "Server for EmailSaver",
   "main": "src/index.ts",
+    "engines": {
+    "node": "18.12.1"
+  },
   "module": "CommonJS",
   "scripts": {
     "dev": "ts-node-dev --respawn --transpile-only src/index.ts",
