@@ -8,16 +8,16 @@ import { createMongodbConnection } from './assets//database/index.database';
 import FetchRoute from './assets//routes/Get.info.route';
 import path from "path"
 const app = express();
+// for deployment
+app.use("/",express.static(path.join(__dirname + '/public')))
 
 const PORT = process.env.PORT || process.env.PORT1 || process.env.PORT2;
 
 app.use( cors( { origin: "*", methods: [ "GET", "POST", "PUT", "DELETE" ] } ) );
 app.use( express.json( {} ) );
 
-// for deployment
-if(process.env.NODE_ENV === "production"){
-    app.use("/",express.static(path.join(__dirname + '/public')))
-}
+
+
 
 /* Mongoose code */
 createMongodbConnection()
