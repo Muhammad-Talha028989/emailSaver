@@ -6,7 +6,10 @@
   "module": "CommonJS",
   "scripts": {
     "dev": "ts-node-dev --respawn --transpile-only src/index.ts",
-    "build": "tsc && vite build"
+    "build": "tsc && vite build",
+    "ts-node:dev": "ts-node src/index.ts",
+    "start": "ts-node dist/index.js",
+    "ts-node:build": "tsc -p ."
   },
   "keywords": [],
   "author": "Muhammad Talha",
@@ -27,6 +30,7 @@
     "cors": "^2.8.5",
     "cryptr": "^6.0.3",
     "dotenv": "^16.0.3",
-    "mongoose": "^6.7.2"
+    "mongoose": "^6.7.2",
+    "ts-node": "^10.9.1"
   }
 }
