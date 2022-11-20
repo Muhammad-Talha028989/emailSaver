@@ -5,13 +5,12 @@
     "engines": {
     "node": "18.12.1"
   },
-  "main": "public/dist/index.html",
   "module": "CommonJS",
   "scripts": {
     "dev": "ts-node-dev --respawn --transpile-only src/index.ts",
     "ts-node:dev": "ts-node src/index.ts",
     "start": "ts-node dist/index.js",
-    "build": "tsc && vite build"
+    "build": "tsc -p"
   },
   "keywords": [],
   "author": "Muhammad Talha",
