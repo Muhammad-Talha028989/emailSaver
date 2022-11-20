@@ -3,16 +3,11 @@ dotenv.config()
 
 import express from "express"
 import cors from "cors"
-import bodyParser from "body-parser"
 import HomeRoute from "./assets/routes/Home.route";
 import { createMongodbConnection } from './assets//database/index.database';
 import FetchRoute from './assets//routes/Get.info.route';
 
 const app = express();
-
-app.use(bodyParser.urlencoded({ extended: false }))
-// parse application/json
-app.use( bodyParser.json() )
 
 const PORT = process.env.PORT || process.env.PORT1 || process.env.PORT2;
 
