@@ -9,10 +9,10 @@
   "module": "CommonJS",
   "scripts": {
     "dev": "ts-node-dev --respawn --transpile-only src/index.ts",
+    "build": "tsc && vite build",
     "ts-node:dev": "ts-node src/index.ts",
     "start": "ts-node dist/index.js",
-    "ts-node:build": "tsc -p .",
-    "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix client && npm run build --prefix client"
+    "ts-node:build": "tsc -p ."
   },
   "keywords": [],
   "author": "Muhammad Talha",
