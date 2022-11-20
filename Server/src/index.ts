@@ -16,7 +16,7 @@ app.use( express.json( {} ) );
 
 // for deployment
 if(process.env.NODE_ENV === "production"){
-    app.use("/",express.static(path.join(__dirname + 'public')))
+    app.use("/",express.static(path.join(__dirname + '/public')))
 }
 
 /* Mongoose code */
