@@ -6,7 +6,7 @@ import GetPersonalForm from './assets/components/GetPersonalInfo/GetPersonal.for
 import PersonalInfoForm from './assets/components/EmailProtection/Personal.info.form'
 import TableLayout from './assets/components/Table/Table.layout'
 
-function App (): JSX.Element
+function App ()
 {
   return (
     <Router>

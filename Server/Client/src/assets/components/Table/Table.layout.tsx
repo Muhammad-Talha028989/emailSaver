@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import useEmailStoreState from '../../LocalStorage/EmailStore'
 
-const TableLayout: () => JSX.Element = (): JSX.Element =>
+const TableLayout = () =>
 {
 
     const EmailStore = useEmailStoreState( state => state?.EmailState )

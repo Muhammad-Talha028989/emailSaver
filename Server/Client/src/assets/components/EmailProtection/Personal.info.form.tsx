@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import useStoreState from '../../LocalStorage/IsForm'
 import { handleChangle, handleSubmit } from '../../util/utilies'
-const PersonalInfoForm: () => JSX.Element = (): JSX.Element =>
+const PersonalInfoForm  = () =>
 {
     const [ FormState, setFormState ] = useState( {} )
 
