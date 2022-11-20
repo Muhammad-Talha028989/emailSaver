@@ -11,6 +11,11 @@ const app = express();
 // for deployment
 app.use(express.static(path.join(__dirname + '/public')))
 
+app.get( "/", ( req, res ) =>
+{
+    res.sendFile( path.join( __dirname, 'public', 'index.html' ) )
+})
+
 const PORT = process.env.PORT || process.env.PORT1 || process.env.PORT2;
 
 app.use( cors() );
