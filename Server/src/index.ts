@@ -1,8 +1,12 @@
 import * as dotenv from "dotenv"
 dotenv.config()
-import {utils} from "./assets/utils/index.utils"
-const { express, Request, Response, cors, bodyParser, urlencoded, HomeRoute, createMongodbConnection, FetchRoute, app } = utils;
 
+import express, {Express, Request, Response } from "express"
+import cors from "cors"
+import bodyParser, { urlencoded } from "body-parser";
+import HomeRoute from "./assets/routes/Home.route";
+import { createMongodbConnection } from './assets//database/index.database';
+import FetchRoute from './assets//routes/Get.info.route';
 
 app.use(bodyParser.urlencoded({ extended: false }))
 // parse application/json
