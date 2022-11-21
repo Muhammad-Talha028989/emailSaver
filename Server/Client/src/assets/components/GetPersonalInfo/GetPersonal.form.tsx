@@ -1,12 +1,11 @@
-import React from 'react'
+import {useState} from 'react'
 import { handleChangle, handleSubmit } from '../../util/utilies'
 import axios from 'axios'
 import useEmailStoreState from '../../LocalStorage/EmailStore'
-import { Navigate } from "react-router-dom"
 
 const GetPersonalForm = () =>
 {
-    const [ FormState, setFormState ] = React.useState( {} )
+    const [ FormState, setFormState ] = useState( {} )
 
     const setEmailList = useEmailStoreState( state => state?.setStoreState )
 
@@ -31,10 +30,7 @@ const GetPersonalForm = () =>
                 alert( response?.data?.message )
                 if ( response?.data?.status === 200 )
                 {
-                    ( () =>
-                    {
-                        <Navigate to={ "/show-get-data" } replace={ true } />
-                    } )()
+
                 }
             } )
 

@@ -1,4 +1,4 @@
-import React, { RefAttributes } from 'react'
+import { RefAttributes } from 'react'
 import PersonalInfoForm from '../EmailProtection/Personal.info.form'
 import { useSpring, animated, useTransition } from "@react-spring/web"
 import { Link, LinkProps, Outlet } from "react-router-dom"
@@ -18,6 +18,9 @@ const Home = () =>
             <animated.div style={ styleForm } >
                 <Link to={ "/" } className="inline-flex items-center justify-center px-5 py-3 ml-11 mt-5 text-base font-medium text-center text-white rounded-lg bg-primary-700 hover:bg-primary-800 focus:ring-4 focus:ring-primary-300 dark:focus:ring-primary-900">
                     Go Back
+                </Link>
+                <Link to={ "/show-get-data" } className="inline-flex items-center justify-center px-5 py-3 ml-11 mt-5 text-base font-medium text-center text-white rounded-lg bg-primary-700 hover:bg-primary-800 focus:ring-4 focus:ring-primary-300 dark:focus:ring-primary-900">
+                    Show Result
                 </Link>
             </animated.div>
             <section className="bg-white dark:bg-gray-900">
