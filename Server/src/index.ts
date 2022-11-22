@@ -16,7 +16,7 @@ app.get( "/", ( req, res ) =>
     res.sendFile( path.join( __dirname, 'public', 'index.html' ) )
 })
 
-const PORT = process.env.PORT || process.env.PORT1 || process.env.PORT2;
+const port = process.env.PORT || process.env.PORT1 || process.env.PORT2;
 
 app.use( cors() );
 app.use( express.json( {} ) );
@@ -36,4 +36,4 @@ app.use( "/home", HomeRoute )
 app.use( "/get/info", FetchRoute );
 
 
-app.listen( PORT , () => console.info( `Running at PORT  ${PORT }` ) )
+app.listen( port , () => console.info( `Running at PORT  ${port }` ) )
