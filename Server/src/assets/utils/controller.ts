@@ -59,7 +59,12 @@ export const HomePostController = (req: Request, res: Response): void => {
 export const PersonalGetController = (req: Request, res: Response): void => {
   res.send("Successful!").status(200);
 };
-
+/**
+ * Function Control the Post request and Response...
+ * @param  {Request} req
+ * @param  {Response} res
+ * @returns void
+ */
 export const PersonalPostController = (req: Request, res: Response): void => {
   let responseData = req?.body.RequestData;
   // console.info( [ "request data", responseData ] )
