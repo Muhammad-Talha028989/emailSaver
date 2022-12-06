@@ -70,79 +70,79 @@ export const PersonalPostController = (req: Request, res: Response): void => {
   // console.info( [ "request data", responseData ] )
   let { email, secretkey } = req?.body?.RequestData;
   // let secret:string = cryptr.encrypt(responseData?.secretkey)
-  if (!email && secretkey) {
-    let isExist: Boolean = false; /* Mean found no secret matched */
-    PersonalModel.find({}, {}, {}).then((responseResult) => {
-      if (!responseResult) {
-        console.warn(
-          `Database PersonalModel return object is null or undefined ${responseResult}`,
-        );
-        res.send({ ...ResponseMessageWhenUnsuccessful, resData: {} });
-        return;
-      }
-      responseResult?.map((emailDoc) => {
-        let secretDecrypt: string = cryptr.decrypt(emailDoc?.secret || "");
-
-        if (secretDecrypt !== responseData?.secretkey) {
-          console.warn(
-            `The secretKey from database is not same to user enter secretKey}`,
-          );
+  if (email) {
+    PersonalModel.findOne({ email: responseData?.email }).then(
+      (resultResponse) => {
+        if (!resultResponse) {
+          // Please check the both input or must enter correct information Error.
+          console.warn(`Both input are incorrect or must Enter the value`);
           res.send({ ...ResponseMessageWhenUnsuccessful, resData: {} });
           return;
         }
+
+        let secretDecrypt: string = cryptr.decrypt(
+          resultResponse?.secret || "",
+        );
         let PasswordDecrptArray: Array<String> = [];
-        emailDoc?.password?.map((items) => {
+        resultResponse?.password?.map((items) => {
           PasswordDecrptArray.push(cryptr.decrypt(items || ""));
         });
-        const ResponseObject = {
-          email: emailDoc?.email,
-          password: PasswordDecrptArray,
-          description: emailDoc?.description,
-        };
-        // Error email found sucessful
-        isExist = true;
-        res.send({ ...ResponseMessageWhenSuccessful, ResponseObject });
-        return;
-      });
-    });
-    // if (!isExist) {
-    //   // Error email not found
-    //   res.send({ ...ResponseMessageWhenUnsuccessful, resData: {} });
-    // }
-  } else if (email && secretkey) {
-    PersonalModel.findOne({ email: responseData?.email }).then(
-      (resultResponse) => {
-        if (resultResponse) {
-          let secretDecrypt: string = cryptr.decrypt(
-            resultResponse?.secret || "",
+
+        if (secretDecrypt !== responseData?.secretkey) {
+          // Error email not found
+          console.warn(
+            `The secretKey from database is not same to user enter secretKey`,
           );
-          let PasswordDecrptArray: Array<String> = [];
-          resultResponse?.password?.map((items) => {
-            PasswordDecrptArray.push(cryptr.decrypt(items || ""));
-          });
-          if (secretDecrypt === responseData?.secretkey) {
-            const ResponseObject = {
-              email: resultResponse?.email,
-              password: PasswordDecrptArray,
-              description: resultResponse?.description,
-            };
-            // Error email found sucessful
-            res.send({ ...ResponseMessageWhenSuccessful, ResponseObject });
-          } else {
-            // Error email not found
-            res.send({ ...ResponseMessageWhenUnsuccessful, resData: {} });
-          }
-        } else {
-          // Please check the both input or must enter correct information Error.
           res.send({ ...ResponseMessageWhenInputAreIncorrects, resData: {} });
+          return;
         }
+        const ResponseObject = {
+          email: resultResponse?.email,
+          password: PasswordDecrptArray,
+          description: resultResponse?.description,
+        };
+        console.info("Done1");
+        res.send({
+          ...ResponseMessageWhenSuccessful,
+          ResponseObject,
+        });
+        return;
       },
     );
-  } else {
-    // Please check the both input or must enter correct information Error.
-
-    res.send({ ...ResponseMessageWhenInputAreIncorrects, resData: {} });
+    return;
   }
+  PersonalModel.find({}, {}, {}).then((responseResult) => {
+    if (!responseResult) {
+      console.warn(
+        `Database PersonalModel return object is null or undefined ${responseResult}`,
+      );
+      res.send({ ...ResponseMessageWhenUnsuccessful, resData: {} });
+      return;
+    }
+    responseResult?.map((emailDoc) => {
+      let secretDecrypt: string = cryptr.decrypt(emailDoc?.secret || "");
+
+      if (secretDecrypt !== responseData?.secretkey) {
+        console.warn(
+          `The secretKey from database is not same to user enter secretKey`,
+        );
+        res.send({ ...ResponseMessageWhenInputAreIncorrects, resData: {} });
+        return;
+      }
+      let PasswordDecrptArray: Array<String> = [];
+      emailDoc?.password?.map((items) => {
+        PasswordDecrptArray.push(cryptr.decrypt(items || ""));
+      });
+      const ResponseObject = {
+        email: emailDoc?.email,
+        password: PasswordDecrptArray,
+        description: emailDoc?.description,
+      };
+      console.info("Done");
+      res.send({ ...ResponseMessageWhenSuccessful, ResponseObject });
+      return;
+    });
+  });
 };
 
 const HomeController = {
