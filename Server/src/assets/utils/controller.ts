@@ -73,32 +73,42 @@ export const PersonalPostController = (req: Request, res: Response): void => {
   if (!email && secretkey) {
     let isExist: Boolean = false; /* Mean found no secret matched */
     PersonalModel.find({}, {}, {}).then((responseResult) => {
-      if (responseResult) {
-        responseResult?.map((emailDoc) => {
-          let secretDecrypt: string = cryptr.decrypt(emailDoc?.secret || "");
-
-          if (secretDecrypt === responseData?.secretkey) {
-            let PasswordDecrptArray: Array<String> = [];
-            emailDoc?.password?.map((items) => {
-              PasswordDecrptArray.push(cryptr.decrypt(items || ""));
-            });
-            const ResponseObject = {
-              email: emailDoc?.email,
-              password: PasswordDecrptArray,
-              description: emailDoc?.description,
-            };
-            // Error email found sucessful
-            isExist = true;
-            res.send({ ...ResponseMessageWhenSuccessful, ResponseObject });
-            return;
-          }
-        });
+      if (!responseResult) {
+        console.warn(
+          `Database PersonalModel return object is null or undefined ${responseResult}`,
+        );
+        res.send({ ...ResponseMessageWhenUnsuccessful, resData: {} });
+        return;
       }
+      responseResult?.map((emailDoc) => {
+        let secretDecrypt: string = cryptr.decrypt(emailDoc?.secret || "");
+
+        if (secretDecrypt !== responseData?.secretkey) {
+          console.warn(
+            `The secretKey from database is not same to user enter secretKey}`,
+          );
+          res.send({ ...ResponseMessageWhenUnsuccessful, resData: {} });
+          return;
+        }
+        let PasswordDecrptArray: Array<String> = [];
+        emailDoc?.password?.map((items) => {
+          PasswordDecrptArray.push(cryptr.decrypt(items || ""));
+        });
+        const ResponseObject = {
+          email: emailDoc?.email,
+          password: PasswordDecrptArray,
+          description: emailDoc?.description,
+        };
+        // Error email found sucessful
+        isExist = true;
+        res.send({ ...ResponseMessageWhenSuccessful, ResponseObject });
+        return;
+      });
     });
-    if (!isExist) {
-      // Error email not found
-      res.send({ ...ResponseMessageWhenUnsuccessful, resData: {} });
-    }
+    // if (!isExist) {
+    //   // Error email not found
+    //   res.send({ ...ResponseMessageWhenUnsuccessful, resData: {} });
+    // }
   } else if (email && secretkey) {
     PersonalModel.findOne({ email: responseData?.email }).then(
       (resultResponse) => {
